@@ -1,5 +1,3 @@
-# dictionary_app
-A dictionary app to check the meaning of words
 
 # dictionary_app
 Dictionary app to check the meaning and pronunciation of words
