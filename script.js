@@ -51,9 +51,10 @@ function displayDictionary(dictionary){
     document.querySelector('.worddefinition').classList.remove('loading');
 }
 
-function search(dictionary){
-    getdictionary(userinput.value)
-    userinput.value=""
+function search(){
+    if(userinput.value !== "") {
+        getdictionary(userinput.value)
+    }
 }
 
 //hook event listeners
