@@ -5,28 +5,29 @@ const word_searched= document.querySelector('.word_searched');
 const phonetic = document.querySelector('.phonetic span')
 const wordclass= document.querySelector(".wordclass");
 const meaning = document.querySelector('.actualdefinition');
+let audio;
 
 
 //fetch dictionary from dictionary api
 function getdictionary(word){
     fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word)
     .then(blob=>blob.json())
-    .then(dictionary=> this.displayDictionary(dictionary))
+    .then(dictionary=> {
+        audio = dictionary[0].phonetics[0].audio;
+     console.log(audio);
+    this.displayDictionary(dictionary)
+})
 }
 
 
-//text to speech
-function audio(){
-    fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word_searched.innerHTML)
-    .then(blob=>blob.json())
-    .then(dictionary=> playAudio(dictionary))
-}
-
-function playAudio(dictionary){
-    const {audio}= dictionary[0].phonetics[1];
-    var a= new Audio(audio);
-    a.play();
-    }
+function playAudio(){
+    console.log(audio)
+    let audio_to_play = document.querySelector('.wordaudio audio');
+    audio_to_play.setAttribute('src', audio);
+    console.log(audio_to_play)
+    console.log(document.querySelector('.wordaudio'));
+    audio_to_play.play();
+};
 
 
 //get data from api
@@ -59,4 +60,4 @@ submitbutton.addEventListener("click", function(e){
     e.preventDefault()
 })
 
-document.querySelector(".wordaudio").addEventListener('click',audio)
+document.querySelector(".wordaudio").addEventListener('click',playAudio)
