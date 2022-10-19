@@ -7,6 +7,7 @@ Dictionary app to check the meaning and pronunciation of words
 
 view the live demo here: 
 
+https://leilayesufu.github.io/dictionary_app/
 
 
 
