@@ -14,7 +14,6 @@ function getdictionary(word){
     .then(blob=>blob.json())
     .then(dictionary=> {
         audio = dictionary[0].phonetics[0].audio;
-     console.log(audio);
     this.displayDictionary(dictionary)
 })
 }
@@ -23,10 +22,13 @@ function getdictionary(word){
 function playAudio(){
     console.log(audio)
     let audio_to_play = document.querySelector('.wordaudio audio');
+    if(audio == ""){
+        alert("No audio available")
+    }else{
     audio_to_play.setAttribute('src', audio);
-    console.log(audio_to_play)
-    console.log(document.querySelector('.wordaudio'));
+    audio_to_play.currentTime = 0;
     audio_to_play.play();
+    }
 };
 
 
